@@ -12,24 +12,23 @@ class Shades extends React.Component {
   }
 
   handleToggleVisibility() {
-    this.setState((prevState) => {
-      return {
-        visibility: !prevState.visibility
-      };
-    })
+    this.setState((prevState) => ({
+      visibility: !prevState.visibility
+    }));
   }
+
   render() {
     return (
       <div>
-          <button onClick={this.handleToggleVisibility}>
-            {this.state.visibility ? 'THEY SAY': 'Go back'}
-          </button>
-          {this.state.visibility && <Boxes />}
-          {!this.state.visibility && (
-          <div>
-            {this.state.greys.map((grey) => <p key={grey}>{grey}</p>)}
-          </div>
-          )}
+        <button onClick={this.handleToggleVisibility}>
+          {!this.state.visibility ? 'THEY SAY': 'Go back'}
+        </button>
+        {!this.state.visibility && <Boxes />}
+        {this.state.visibility && (
+        <div>
+          {this.state.greys.map((grey) => <p key={grey}>{grey}</p>)}
+        </div>
+        )}
       </div>
     );
   }
